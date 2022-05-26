@@ -239,7 +239,7 @@ func preHandleTxqueue(ctx context.Context, netInterface string, cl spec.Channel)
 				if len > 0 {
 					return response
 				} else {
-					log.Infof(ctx,"the tx_queue_len value for %s is %s", netInterface, txlen)
+					log.Infof(ctx, "the tx_queue_len value for %s is %s", netInterface, txlen)
 				}
 			}
 		}
@@ -361,11 +361,12 @@ func stopNet(ctx context.Context, netInterface string, cl spec.Channel) *spec.Re
 		return spec.ReturnFail(spec.Forbidden, fmt.Sprintf("tc no permission"))
 	}
 
-	resposne := cl.Run(ctx, "tc", fmt.Sprintf(`filter del dev %s parent 1: prio 4`, netInterface))
-	if !resposne.Success {
-		return resposne
-	}
-	return cl.Run(ctx, "tc", fmt.Sprintf(`qdisc del dev %s root`, netInterface))
+	cl.Run(ctx, "tc", fmt.Sprintf(`filter del dev %s parent 1: prio 4`, netInterface))
+	resposne := cl.Run(ctx, "tc", fmt.Sprintf(`qdisc del dev %s root`, netInterface))
+	//if !resposne.Success {
+	//	return resposne
+	//}
+	return resposne
 }
 
 // getPeerPorts returns all ports communicating with the port
