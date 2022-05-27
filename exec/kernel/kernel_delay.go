@@ -19,15 +19,15 @@ package kernel
 import (
 	"context"
 	"fmt"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec"
 	"github.com/chaosblade-io/chaosblade-spec-go/log"
+	"github.com/linaipeng/chaosblade-exec-os/exec"
 	"path"
 	"strings"
 
 	"github.com/chaosblade-io/chaosblade-spec-go/spec"
 	"github.com/chaosblade-io/chaosblade-spec-go/util"
 
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/category"
+	"github.com/linaipeng/chaosblade-exec-os/exec/category"
 )
 
 const StraceDelayBin = "chaos_stracedelay"
@@ -50,7 +50,7 @@ func NewStraceDelayActionSpec() spec.ExpActionCommandSpec {
 					Desc:     "cgroup root path, default value /sys/fs/cgroup",
 					NoArgs:   false,
 					Required: false,
-					Default: "/sys/fs/cgroup",
+					Default:  "/sys/fs/cgroup",
 				},
 			},
 			ActionFlags: []spec.ExpFlagSpec{
@@ -155,7 +155,7 @@ func (dae *StraceDelayActionExecutor) Exec(uid string, ctx context.Context, mode
 
 	delay_loc_flag = model.ActionFlags["delay-loc"]
 	if delay_loc_flag == "" {
-		log.Errorf(ctx,"delay-loc is nil")
+		log.Errorf(ctx, "delay-loc is nil")
 		return spec.ResponseFailWithFlags(spec.ParameterLess, "delay-loc")
 	}
 	first_flag = model.ActionFlags["first"]
@@ -200,6 +200,6 @@ func (dae *StraceDelayActionExecutor) start(ctx context.Context, pidList string,
 }
 
 func (dae *StraceDelayActionExecutor) stop(ctx context.Context, pidList string, syscallName string) *spec.Response {
-	ctx = context.WithValue(ctx,"bin", StraceDelayBin)
+	ctx = context.WithValue(ctx, "bin", StraceDelayBin)
 	return exec.Destroy(ctx, dae.channel, "strace delay")
 }

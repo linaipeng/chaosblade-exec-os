@@ -19,8 +19,8 @@ package mem
 import (
 	"context"
 	"fmt"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec"
 	"github.com/chaosblade-io/chaosblade-spec-go/log"
+	"github.com/linaipeng/chaosblade-exec-os/exec"
 	"io/ioutil"
 	"math"
 	"os"
@@ -31,7 +31,7 @@ import (
 	"github.com/chaosblade-io/chaosblade-spec-go/spec"
 	"github.com/chaosblade-io/chaosblade-spec-go/util"
 
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/category"
+	"github.com/linaipeng/chaosblade-exec-os/exec/category"
 )
 
 const BurnMemBin = "chaos_burnmem"
@@ -209,7 +209,7 @@ func (ce *memExecutor) Exec(uid string, ctx context.Context, model *spec.ExpMode
 		var err error
 		memPercent, err = strconv.Atoi(memPercentStr)
 		if err != nil {
-			log.Errorf(ctx,"`%s`: mem-percent  must be a positive integer", memPercentStr)
+			log.Errorf(ctx, "`%s`: mem-percent  must be a positive integer", memPercentStr)
 			return spec.ResponseFailWithFlags(spec.ParameterIllegal, "mem-percent", memPercentStr, "it must be a positive integer")
 		}
 		if memPercent > 100 || memPercent < 0 {
@@ -348,6 +348,6 @@ func (ce *memExecutor) start(ctx context.Context, memPercent, memReserve, memRat
 
 // stop burn mem
 func (ce *memExecutor) stop(ctx context.Context, burnMemMode string) *spec.Response {
-	ctx = context.WithValue(ctx,"bin", BurnMemBin)
+	ctx = context.WithValue(ctx, "bin", BurnMemBin)
 	return exec.Destroy(ctx, ce.channel, "mem load")
 }

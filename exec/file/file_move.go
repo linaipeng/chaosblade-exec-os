@@ -19,12 +19,12 @@ package file
 import (
 	"context"
 	"fmt"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec"
 	"github.com/chaosblade-io/chaosblade-spec-go/log"
 	"github.com/chaosblade-io/chaosblade-spec-go/spec"
+	"github.com/linaipeng/chaosblade-exec-os/exec"
 	"path"
 
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/category"
+	"github.com/linaipeng/chaosblade-exec-os/exec/category"
 )
 
 const MoveFileBin = "chaos_movefile"
@@ -120,7 +120,7 @@ func (f *FileMoveActionExecutor) Exec(uid string, ctx context.Context, model *sp
 	if !force {
 		targetFile := path.Join(target, "/", path.Base(filepath))
 		if exec.CheckFilepathExists(ctx, f.channel, targetFile) {
-			log.Errorf(ctx,"`%s`: target file does not exist", targetFile)
+			log.Errorf(ctx, "`%s`: target file does not exist", targetFile)
 			return spec.ResponseFailWithFlags(spec.ParameterInvalid, "target", targetFile, "the target file does not exist")
 		}
 	}

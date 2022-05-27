@@ -17,16 +17,16 @@
 package main
 
 import (
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/cpu"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/disk"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/file"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/kernel"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/mem"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/model"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/network"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/process"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/script"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/systemd"
+	"github.com/linaipeng/chaosblade-exec-os/exec/cpu"
+	"github.com/linaipeng/chaosblade-exec-os/exec/disk"
+	"github.com/linaipeng/chaosblade-exec-os/exec/file"
+	"github.com/linaipeng/chaosblade-exec-os/exec/kernel"
+	"github.com/linaipeng/chaosblade-exec-os/exec/mem"
+	"github.com/linaipeng/chaosblade-exec-os/exec/model"
+	"github.com/linaipeng/chaosblade-exec-os/exec/network"
+	"github.com/linaipeng/chaosblade-exec-os/exec/process"
+	"github.com/linaipeng/chaosblade-exec-os/exec/script"
+	"github.com/linaipeng/chaosblade-exec-os/exec/systemd"
 	"log"
 	"os"
 

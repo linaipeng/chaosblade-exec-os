@@ -19,15 +19,15 @@ package file
 import (
 	"context"
 	"fmt"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec"
 	"github.com/chaosblade-io/chaosblade-spec-go/log"
+	"github.com/linaipeng/chaosblade-exec-os/exec"
 	"os"
 	"regexp"
 	"strconv"
 	"strings"
 
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/category"
 	"github.com/chaosblade-io/chaosblade-spec-go/spec"
+	"github.com/linaipeng/chaosblade-exec-os/exec/category"
 )
 
 const ChmodFileBin = "chaos_chmodfile"

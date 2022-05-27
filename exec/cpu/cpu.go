@@ -19,8 +19,8 @@ package cpu
 import (
 	"context"
 	"fmt"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec"
 	"github.com/chaosblade-io/chaosblade-spec-go/log"
+	"github.com/linaipeng/chaosblade-exec-os/exec"
 	"os"
 	os_exec "os/exec"
 	"runtime"
@@ -32,7 +32,7 @@ import (
 	"github.com/chaosblade-io/chaosblade-spec-go/spec"
 	"github.com/chaosblade-io/chaosblade-spec-go/util"
 
-	"github.com/chaosblade-io/chaosblade-exec-os/exec/category"
+	"github.com/linaipeng/chaosblade-exec-os/exec/category"
 	_ "go.uber.org/automaxprocs/maxprocs"
 )
 
