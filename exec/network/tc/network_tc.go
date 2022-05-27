@@ -361,12 +361,16 @@ func stopNet(ctx context.Context, netInterface string, cl spec.Channel) *spec.Re
 		return spec.ReturnFail(spec.Forbidden, fmt.Sprintf("tc no permission"))
 	}
 
-	cl.Run(ctx, "tc", fmt.Sprintf(`filter del dev %s parent 1: prio 4`, netInterface))
-	resposne := cl.Run(ctx, "tc", fmt.Sprintf(`qdisc del dev %s root`, netInterface))
+	resposneFilter := cl.Run(ctx, "tc", fmt.Sprintf(`filter del dev %s parent 1: prio 4`, netInterface))
+	if !resposneFilter.Success {
+		resposne := cl.Run(ctx, "tc", fmt.Sprintf(`qdisc del dev %s root`, netInterface))
+		return resposne
+	}
+	return resposneFilter
+	//resposne := cl.Run(ctx, "tc", fmt.Sprintf(`qdisc del dev %s root`, netInterface))
 	//if !resposne.Success {
 	//	return resposne
 	//}
-	return resposne
 }
 
 // getPeerPorts returns all ports communicating with the port
