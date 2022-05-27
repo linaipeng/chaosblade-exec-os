@@ -18,10 +18,10 @@ package cpu
 
 import (
 	"context"
-	"github.com/chaosblade-io/chaosblade-exec-os/exec"
 	"github.com/chaosblade-io/chaosblade-spec-go/channel"
 	"github.com/chaosblade-io/chaosblade-spec-go/log"
 	"github.com/containerd/cgroups"
+	"github.com/linaipeng/chaosblade-exec-os/exec"
 	"github.com/shirou/gopsutil/cpu"
 	"strconv"
 	"time"
@@ -71,7 +71,7 @@ func getUsed(ctx context.Context, precpu bool, cpuIndex int) float64 {
 		log.Fatalf(ctx, "get cpu usage fail, %s", err.Error())
 	}
 	if precpu {
-		if cpuIndex > len(totalCpuPercent){
+		if cpuIndex > len(totalCpuPercent) {
 			log.Fatalf(ctx, "illegal cpu index %d", cpuIndex)
 		}
 		return totalCpuPercent[cpuIndex]
